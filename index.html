@@ -58,7 +58,7 @@
       padding: 0.4rem 1.5rem;
       font-size: 0.9rem;
     }
-    /* ----- HEADER / NAV ----- */
+    /* ----- HEADER / NAV with CUSTOM LOGO ----- */
     .navbar {
       display: flex;
       flex-wrap: wrap;
@@ -67,20 +67,40 @@
       padding: 1.2rem 0;
       border-bottom: 2px solid #e0d6cc;
     }
-    .logo h1 {
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .logo-icon {
+      width: 60px;
+      height: 60px;
+      background: #1e3c3a;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #f5ede4;
+      font-size: 2rem;
+      box-shadow: 0 4px 12px rgba(30, 60, 58, 0.3);
+      flex-shrink: 0;
+    }
+    .logo-text h1 {
       font-size: 2.1rem;
       font-weight: 600;
       color: #1a3a35;
       letter-spacing: -0.5px;
+      line-height: 1;
     }
-    .logo span {
+    .logo-text span {
       font-weight: 300;
       background: #d9c9b8;
       padding: 0.1rem 0.8rem;
       border-radius: 40px;
-      font-size: 1rem;
-      margin-left: 0.5rem;
+      font-size: 0.85rem;
       color: #1e2b2c;
+      display: inline-block;
+      margin-top: 0.1rem;
     }
     .nav-links {
       display: flex;
@@ -154,10 +174,19 @@
       text-align: center;
       box-shadow: 0 12px 24px rgba(0,0,0,0.08);
     }
-    .hero-image i {
-      font-size: 8rem;
+    .hero-image .hero-logo-big {
+      font-size: 7rem;
       color: #1e3c3a;
-      opacity: 0.7;
+      opacity: 0.8;
+      background: rgba(255,255,255,0.3);
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      border: 4px solid #1e3c3a;
     }
     .hero-image p {
       margin-top: 1rem;
@@ -392,7 +421,7 @@
       color: #1e3c3a;
       width: 1.5rem;
     }
-    /* ----- FOOTER ----- */
+    /* ----- FOOTER with logo ----- */
     .footer {
       margin-top: 3rem;
       padding: 2.5rem 0 1.5rem;
@@ -400,6 +429,23 @@
       text-align: center;
       color: #3b4f49;
       font-size: 0.95rem;
+    }
+    .footer .footer-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+    }
+    .footer .footer-logo .logo-icon-sm {
+      width: 45px;
+      height: 45px;
+      background: #1e3c3a;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #f5ede4;
+      font-size: 1.5rem;
     }
     .footer i {
       margin: 0 0.3rem;
@@ -424,15 +470,23 @@
       .nav-links { flex-wrap: wrap; justify-content: center; gap: 1rem; }
       .hero-content h2 { font-size: 2.4rem; }
       .auth-card { padding: 1.8rem; }
+      .logo-icon { width: 50px; height: 50px; font-size: 1.5rem; }
+      .logo-text h1 { font-size: 1.6rem; }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- HEADER -->
+    <!-- HEADER with CUSTOM LOGO -->
     <header class="navbar">
       <div class="logo">
-        <h1><i class="fas fa-mortar-pestle" style="color:#1e3c3a;"></i> Fidelity <span>Dawakhana</span></h1>
+        <div class="logo-icon">
+          <i class="fas fa-mortar-pestle"></i>
+        </div>
+        <div class="logo-text">
+          <h1>Fidelity</h1>
+          <span>Dawakhana</span>
+        </div>
       </div>
       <div class="nav-links">
         <a href="#home">Home</a>
@@ -463,7 +517,9 @@
           </div>
         </div>
         <div class="hero-image">
-          <i class="fas fa-prescription"></i>
+          <div class="hero-logo-big">
+            <i class="fas fa-mortar-pestle"></i>
+          </div>
           <p><strong>Fidelity</strong> Dawakhana</p>
           <span style="background: #1e3c3a; color: #f5ede4; padding: 0.2rem 1.5rem; border-radius: 40px; display: inline-block; margin-top: 0.8rem;">Authentic Medicines</span>
         </div>
@@ -632,8 +688,14 @@
       </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- FOOTER with logo -->
     <footer class="footer">
+      <div class="footer-logo">
+        <div class="logo-icon-sm">
+          <i class="fas fa-mortar-pestle"></i>
+        </div>
+        <span style="font-weight:600; font-size:1.2rem; color:#1a3a35;">Fidelity Dawakhana</span>
+      </div>
       <div class="footer-links">
         <a href="#home">Home</a>
         <a href="#about">About</a>
@@ -648,64 +710,4 @@
     </footer>
   </div>
 
-  <!-- JAVASCRIPT (login + signup handlers) -->
-  <script>
-    // Login handler
-    function handleLogin(e) {
-      e.preventDefault();
-      const email = document.getElementById('loginEmail').value.trim();
-      const password = document.getElementById('loginPassword').value.trim();
-      if (email === '' || password === '') {
-        alert('Please fill in both fields.');
-        return false;
-      }
-      if (password.length < 4) {
-        alert('Password must be at least 4 characters.');
-        return false;
-      }
-      alert('✅ Welcome back, ' + email.split('@')[0] + '! (demo login)');
-      return false;
-    }
-
-    // Signup handler
-    function handleSignup(e) {
-      e.preventDefault();
-      const name = document.getElementById('signupName').value.trim();
-      const email = document.getElementById('signupEmail').value.trim();
-      const phone = document.getElementById('signupPhone').value.trim();
-      const password = document.getElementById('signupPassword').value.trim();
-      const role = document.getElementById('signupRole').value;
-      
-      if (name === '' || email === '' || password === '') {
-        alert('Please fill in all required fields (Name, Email, Password).');
-        return false;
-      }
-      if (password.length < 6) {
-        alert('Password must be at least 6 characters.');
-        return false;
-      }
-      alert('🎉 Account created for ' + name + ' (' + role + '). Welcome to Fidelity Dawakhana!');
-      document.getElementById('signupName').value = '';
-      document.getElementById('signupEmail').value = '';
-      document.getElementById('signupPhone').value = '';
-      document.getElementById('signupPassword').value = '';
-      return false;
-    }
-
-    // Smooth scroll for internal links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        if (href === '#') return;
-        const target = document.querySelector(href);
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    });
-
-    console.log('🌿 Fidelity Dawakhana – Human crafted with care.');
-  </script>
-</body>
-</html>
+  <!-- J
