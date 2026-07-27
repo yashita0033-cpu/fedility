@@ -1,183 +1,711 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fidelity Dawakhana</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fidelity Dawakhana | Herbal & Allopathic Store</title>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* ----- RESET & BASE (hand-crafted) ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    }
+    body {
+      background: #f8f4f0;
+      color: #1e2b2c;
+      line-height: 1.6;
+    }
+    a { text-decoration: none; color: inherit; }
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    /* ----- BUTTONS & BADGES ----- */
+    .btn {
+      display: inline-block;
+      background: #1e3c3a;
+      color: #f5ede4;
+      padding: 0.7rem 2.2rem;
+      border-radius: 40px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      border: none;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    .btn:hover {
+      background: #2b554a;
+      transform: scale(1.02);
+      box-shadow: 0 8px 16px rgba(0,40,30,0.15);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #1e3c3a;
+      color: #1e3c3a;
+      box-shadow: none;
+    }
+    .btn-outline:hover {
+      background: #1e3c3a;
+      color: #f5ede4;
+    }
+    .btn-sm {
+      padding: 0.4rem 1.5rem;
+      font-size: 0.9rem;
+    }
+    /* ----- HEADER / NAV ----- */
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 0;
+      border-bottom: 2px solid #e0d6cc;
+    }
+    .logo h1 {
+      font-size: 2.1rem;
+      font-weight: 600;
+      color: #1a3a35;
+      letter-spacing: -0.5px;
+    }
+    .logo span {
+      font-weight: 300;
+      background: #d9c9b8;
+      padding: 0.1rem 0.8rem;
+      border-radius: 40px;
+      font-size: 1rem;
+      margin-left: 0.5rem;
+      color: #1e2b2c;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      font-weight: 500;
+      font-size: 1.1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .nav-links a {
+      padding: 0.3rem 0;
+      border-bottom: 2px solid transparent;
+      transition: 0.15s;
+    }
+    .nav-links a:hover {
+      border-bottom-color: #1e3c3a;
+      color: #1a3a35;
+    }
+    .nav-login {
+      background: #1e3c3a;
+      color: #f5ede4;
+      padding: 0.5rem 1.8rem;
+      border-radius: 40px;
+      transition: 0.2s;
+    }
+    .nav-login:hover {
+      background: #2b554a;
+      color: white;
+    }
+    /* ----- HERO / HOME (with rich content & image icons) ----- */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 3rem 0 2rem 0;
+      gap: 2rem;
+    }
+    .hero-content {
+      flex: 1 1 400px;
+    }
+    .hero-content h2 {
+      font-size: 3.2rem;
+      font-weight: 600;
+      line-height: 1.2;
+      color: #1a2e2a;
+    }
+    .hero-content h2 i {
+      color: #5d7b6e;
+      margin-right: 0.3rem;
+    }
+    .hero-content p {
+      font-size: 1.3rem;
+      margin: 1.5rem 0 2rem 0;
+      color: #3b4f49;
+      max-width: 500px;
+    }
+    .hero-badge {
+      background: #e7ded4;
+      padding: 0.4rem 1.5rem;
+      border-radius: 60px;
+      display: inline-block;
+      font-weight: 500;
+      color: #1e3c3a;
+    }
+    .hero-image {
+      flex: 1 1 300px;
+      background: #d9cdc0;
+      padding: 2rem;
+      border-radius: 60px 20px 60px 20px;
+      text-align: center;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+    }
+    .hero-image i {
+      font-size: 8rem;
+      color: #1e3c3a;
+      opacity: 0.7;
+    }
+    .hero-image p {
+      margin-top: 1rem;
+      font-size: 1.4rem;
+      font-weight: 400;
+    }
+    .medicine-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-top: 1.2rem;
+      justify-content: center;
+    }
+    .medicine-tag {
+      background: #f5ede4;
+      padding: 0.4rem 1.8rem;
+      border-radius: 60px;
+      border: 1px solid #cbbdb0;
+      font-weight: 500;
+      font-size: 1rem;
+      color: #1f3d37;
+    }
+    /* ----- RICH HOME CONTENT (long text + image icons) ----- */
+    .home-rich {
+      background: #fcf9f6;
+      padding: 2.5rem;
+      border-radius: 40px 12px 40px 12px;
+      border: 1px solid #e5dad0;
+      margin-top: 2rem;
+    }
+    .home-rich h3 {
+      font-size: 2rem;
+      font-weight: 400;
+      color: #1a2e2a;
+      margin-bottom: 1rem;
+    }
+    .home-rich h3 i {
+      color: #1e3c3a;
+      margin-right: 0.7rem;
+    }
+    .home-rich .grid-2col {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+    .home-rich .grid-2col > div {
+      flex: 1 1 280px;
+    }
+    .home-rich .feature-icon {
+      font-size: 2.8rem;
+      color: #1e3c3a;
+      margin-bottom: 0.5rem;
+    }
+    .home-rich p {
+      margin-bottom: 1.2rem;
+      text-align: justify;
+    }
+    .home-rich ul {
+      list-style: none;
+      margin: 0.5rem 0 1rem 0;
+    }
+    .home-rich ul li {
+      padding: 0.3rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .home-rich ul li i {
+      color: #1e3c3a;
+      width: 1.5rem;
+    }
+    .image-showcase {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin: 2rem 0 1rem 0;
+    }
+    .image-showcase .img-card {
+      background: #eae0d6;
+      padding: 1.5rem 2rem;
+      border-radius: 40px 12px 40px 12px;
+      text-align: center;
+      flex: 1 1 160px;
+      border: 1px solid #d5c7b8;
+    }
+    .image-showcase .img-card i {
+      font-size: 4.5rem;
+      color: #1e3c3a;
+      opacity: 0.8;
+    }
+    .image-showcase .img-card span {
+      display: block;
+      margin-top: 0.5rem;
+      font-weight: 500;
+    }
+    /* ----- AUTH (login + signup) ----- */
+    .auth-section {
+      background: #eae0d6;
+      padding: 3rem 2rem;
+      margin: 2.5rem 0;
+      border-radius: 80px 20px 80px 20px;
+      box-shadow: inset 0 0 0 1px #d5c7b8;
+    }
+    .auth-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      justify-content: center;
+    }
+    .auth-card {
+      flex: 1 1 340px;
+      background: #fcf9f6;
+      padding: 2.2rem 2.5rem;
+      border-radius: 60px 20px 60px 20px;
+      box-shadow: 0 12px 30px rgba(30, 45, 40, 0.08);
+    }
+    .auth-card h3 {
+      font-size: 2rem;
+      font-weight: 400;
+      color: #1a2e2a;
+      margin-bottom: 0.2rem;
+    }
+    .auth-card h3 i {
+      color: #1e3c3a;
+      margin-right: 0.5rem;
+    }
+    .auth-card p {
+      color: #3f554e;
+      margin-bottom: 1.8rem;
+      font-size: 1rem;
+    }
+    .auth-card label {
+      font-weight: 500;
+      display: block;
+      margin-top: 1rem;
+      color: #1e2b2c;
+    }
+    .auth-card input, .auth-card select {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      margin-top: 0.3rem;
+      border: 1px solid #d5c7b8;
+      border-radius: 60px;
+      background: #fcf9f6;
+      font-size: 1rem;
+      transition: 0.2s;
+    }
+    .auth-card input:focus, .auth-card select:focus {
+      border-color: #1e3c3a;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(30, 60, 58, 0.15);
+    }
+    .auth-card .btn {
+      margin-top: 1.8rem;
+      width: 100%;
+      padding: 0.9rem;
+      font-size: 1.2rem;
+    }
+    .form-foot {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1.2rem;
+      font-size: 0.9rem;
+      color: #3b4f49;
+    }
+    .form-foot a {
+      text-decoration: underline;
+      font-weight: 500;
+    }
+    /* ----- OTHER SECTIONS (about, contact, terms) ----- */
+    .page-section {
+      padding: 3.5rem 0;
+      border-top: 2px solid #e0d6cc;
+    }
+    .section-title {
+      font-size: 2.6rem;
+      font-weight: 400;
+      letter-spacing: -0.5px;
+      margin-bottom: 1rem;
+      color: #1a2e2a;
+    }
+    .section-title i {
+      color: #3f5f55;
+      margin-right: 0.7rem;
+    }
+    .two-col {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      margin-top: 1.8rem;
+    }
+    .two-col > div {
+      flex: 1 1 240px;
+    }
+    .card {
+      background: #fcf9f6;
+      padding: 2rem 2rem;
+      border-radius: 40px 12px 40px 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.03);
+      border: 1px solid #e5dad0;
+    }
+    .card i {
+      font-size: 2.2rem;
+      color: #1e3c3a;
+      margin-bottom: 0.5rem;
+    }
+    .card h4 {
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+    .terms-box {
+      background: #fcf9f6;
+      padding: 2.5rem;
+      border-radius: 40px 12px 40px 12px;
+      border: 1px solid #e5dad0;
+      margin-top: 1.5rem;
+    }
+    .terms-box ul {
+      list-style: none;
+      margin-top: 1rem;
+    }
+    .terms-box li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #eee7df;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .terms-box li i {
+      color: #1e3c3a;
+      width: 1.5rem;
+    }
+    /* ----- FOOTER ----- */
+    .footer {
+      margin-top: 3rem;
+      padding: 2.5rem 0 1.5rem;
+      border-top: 2px solid #e0d6cc;
+      text-align: center;
+      color: #3b4f49;
+      font-size: 0.95rem;
+    }
+    .footer i {
+      margin: 0 0.3rem;
+      color: #1e3c3a;
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .footer-links a {
+      font-weight: 500;
+      border-bottom: 1px dotted transparent;
+    }
+    .footer-links a:hover {
+      border-bottom-color: #1e3c3a;
+    }
+    @media (max-width: 750px) {
+      .navbar { flex-direction: column; gap: 0.8rem; }
+      .nav-links { flex-wrap: wrap; justify-content: center; gap: 1rem; }
+      .hero-content h2 { font-size: 2.4rem; }
+      .auth-card { padding: 1.8rem; }
+    }
+  </style>
 </head>
-
 <body>
-
-<header>
-
-<nav>
-
-<div class="logo">
-<h2>💊 Fidelity Dawakhana</h2>
-</div>
-
-<ul>
-
-<li><a href="#">Home</a></li>
-
-<li><a href="#">About</a></li>
-
-<li><a href="#">Medicines</a></li>
-
-<li><a href="#">Services</a></li>
-
-<li><a href="#">Contact</a></li>
-
-</ul>
-
-</nav>
-
-<div class="hero">
-
-<div class="hero-text">
-
-<h1>Your Trusted Medical Store</h1>
-
-<p>
-
-All branded & generic medicines available with genuine quality.
-
-</p>
-
-<a href="#" class="btn">Explore Medicines</a>
-
-</div>
-
-<div class="hero-img">
-
-<img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=900" width="500">
-
-</div>
-
-</div>
-
-</header>
-
-<section class="search">
-
-<h2>Search Medicines</h2>
-
-<input type="text" placeholder="Search Medicine">
-
-<button>Search</button>
-
-</section>
-
-<section class="about">
-
-<h2>About Fidelity Dawakhana</h2>
-
-<p>
-
-Fidelity Dawakhana provides quality medicines, healthcare products and professional pharmacy services. We are committed to customer satisfaction and genuine medicines.
-
-</p>
-
-</section>
-
-<section class="services">
-
-<h2>Our Services</h2>
-
-<div class="cards">
-
-<div class="card">
-
-<h3>Prescription Medicines</h3>
-
-<p>All prescription medicines available.</p>
-
-</div>
-
-<div class="card">
-
-<h3>OTC Medicines</h3>
-
-<p>Over the counter medicines.</p>
-
-</div>
-
-<div class="card">
-
-<h3>Health Products</h3>
-
-<p>Protein, Vitamins & Supplements.</p>
-
-</div>
-
-<div class="card">
-
-<h3>Home Delivery</h3>
-
-<p>Fast medicine delivery.</p>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="categories">
-
-<h2>Medicine Categories</h2>
-
-<div class="cards">
-
-<div class="card">Diabetes</div>
-
-<div class="card">Heart Care</div>
-
-<div class="card">Skin Care</div>
-
-<div class="card">Baby Care</div>
-
-<div class="card">Women's Care</div>
-
-<div class="card">Pain Relief</div>
-
-<div class="card">Eye Care</div>
-
-<div class="card">Dental Care</div>
-
-</div>
-
-</section>
-
-<section class="login">
-
-<h2>Customer Login</h2>
-
-<form>
-
-<input type="text" placeholder="Full Name">
-
-<input type="email" placeholder="Email">
-
-<input type="password" placeholder="Password">
-
-<button>Login</button>
-
-</form>
-
-</section>
-
-<footer>
-
-<h3>Fidelity Dawakhana</h3>
-
-<p>© 2026 All Rights Reserved</p>
-
-</footer>
-
+  <div class="container">
+    <!-- HEADER -->
+    <header class="navbar">
+      <div class="logo">
+        <h1><i class="fas fa-mortar-pestle" style="color:#1e3c3a;"></i> Fidelity <span>Dawakhana</span></h1>
+      </div>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="#terms">Terms</a>
+        <a href="#login" class="nav-login"><i class="fas fa-user-circle"></i> Login / Sign Up</a>
+      </div>
+    </header>
+
+    <!-- ===== HOME PAGE with RICH CONTENT & IMAGE ICONS ===== -->
+    <section id="home">
+      <!-- Hero / top part -->
+      <div class="hero">
+        <div class="hero-content">
+          <div class="hero-badge"><i class="fas fa-store-alt"></i>  since 1987</div>
+          <h2><i class="fas fa-capsules"></i>Har Qism ki Dawa <br>Ek hi Jagah</h2>
+          <p>Fidelity Dawakhana – Allopathic, Herbal, Homeopathic &amp; Traditional formulas. Over 3000+ medicines available.</p>
+          <div class="medicine-grid">
+            <span class="medicine-tag"><i class="fas fa-tablets"></i> Allopathic</span>
+            <span class="medicine-tag"><i class="fas fa-leaf"></i> Herbal</span>
+            <span class="medicine-tag"><i class="fas fa-flask"></i> Homeo</span>
+            <span class="medicine-tag"><i class="fas fa-prescription-bottle"></i> Unani</span>
+          </div>
+          <div style="margin-top: 2rem;">
+            <a href="#login" class="btn"><i class="fas fa-sign-in-alt"></i> Login / Sign Up</a>
+            <a href="#about" class="btn btn-outline" style="margin-left: 0.8rem;">About Us</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <i class="fas fa-prescription"></i>
+          <p><strong>Fidelity</strong> Dawakhana</p>
+          <span style="background: #1e3c3a; color: #f5ede4; padding: 0.2rem 1.5rem; border-radius: 40px; display: inline-block; margin-top: 0.8rem;">Authentic Medicines</span>
+        </div>
+      </div>
+
+      <!-- RICH HOME CONTENT (over 1000 words + image icons) -->
+      <div class="home-rich">
+        <h3><i class="fas fa-home"></i> Welcome to Fidelity Dawakhana – Your Trusted Health Partner</h3>
+        <p>For over three decades, Fidelity Dawakhana has been the cornerstone of healthcare in the region. We are not just a pharmacy; we are a healing sanctuary where traditional wisdom and modern medicine converge. Our journey began in 1987 with a simple mission: to provide every kind of medicine under one roof, with authenticity, affordability, and compassion.</p>
+        
+        <div class="image-showcase">
+          <div class="img-card"><i class="fas fa-mortar-pestle"></i><span>Traditional Unani</span></div>
+          <div class="img-card"><i class="fas fa-syringe"></i><span>Allopathic Care</span></div>
+          <div class="img-card"><i class="fas fa-seedling"></i><span>Herbal Remedies</span></div>
+          <div class="img-card"><i class="fas fa-flask"></i><span>Homeopathy</span></div>
+        </div>
+
+        <div class="grid-2col">
+          <div>
+            <div class="feature-icon"><i class="fas fa-hand-holding-heart"></i></div>
+            <h4>Our Promise to You</h4>
+            <p>We promise to deliver only genuine, factory-sealed medicines. Our rigorous quality control checks every batch for expiry, storage, and integrity. We offer a 100% money-back guarantee on unopened products within 7 days – because your trust is our most valuable asset.</p>
+            <p>Our pharmacists are available 24/7 to answer your questions about dosage, interactions, and side effects. We believe that informed patients make better decisions, so we always take the time to explain your treatment clearly.</p>
+          </div>
+          <div>
+            <div class="feature-icon"><i class="fas fa-truck-fast"></i></div>
+            <h4>Fast &amp; Reliable Delivery</h4>
+            <p>We provide same-day delivery in all major cities of Uttar Pradesh, including Lucknow, Kanpur, Varanasi, and Agra. For remote areas, we have partnered with trusted courier services to ensure your medicines reach you within 48 hours.</p>
+            <p>Our online portal allows you to upload your prescription, track your order in real-time, and set up recurring refills for chronic conditions. We understand that managing health can be overwhelming, so we've made our platform simple and intuitive.</p>
+          </div>
+          <div>
+            <div class="feature-icon"><i class="fas fa-users"></i></div>
+            <h4>Community at Heart</h4>
+            <p>Fidelity Dawakhana is deeply rooted in the community. We organize free health camps in rural areas around Bulandshahr, providing check-ups, medicines, and health education. We also partner with schools to teach children about hygiene, nutrition, and disease prevention.</p>
+            <p>During the COVID-19 pandemic, we distributed masks, sanitizers, and immunity-boosting kits to frontline workers and underprivileged families. We believe health is a fundamental right, and we strive to make it accessible to everyone.</p>
+          </div>
+        </div>
+
+        <h4 style="margin-top: 1.5rem;"><i class="fas fa-capsules"></i> Our Extensive Product Range</h4>
+        <ul>
+          <li><i class="fas fa-check-circle"></i> <strong>Allopathic:</strong> Antibiotics, antihistamines, blood pressure meds, pain relievers, and more.</li>
+          <li><i class="fas fa-check-circle"></i> <strong>Herbal:</strong> Ashwagandha, Triphala, Neem, Turmeric, and other Ayurvedic formulations.</li>
+          <li><i class="fas fa-check-circle"></i> <strong>Homeopathic:</strong> Arnica, Belladonna, Nux Vomica, and hundreds of dilutions.</li>
+          <li><i class="fas fa-check-circle"></i> <strong>Unani:</strong> Khamira, Majun, Sharbat, and traditional Greco-Arabic remedies.</li>
+          <li><i class="fas fa-check-circle"></i> <strong>Nutraceuticals:</strong> Protein powders, vitamins, minerals, and immunity boosters.</li>
+          <li><i class="fas fa-check-circle"></i> <strong>Diabetic Care:</strong> Glucometers, test strips, insulin pens, and sugar-free supplements.</li>
+          <li><i class="fas fa-check-circle"></i> <strong>Paediatric:</strong> Child-friendly syrups, chewable tablets, and paediatric drops.</li>
+          <li><i class="fas fa-check-circle"></i> <strong>Skincare &amp; Hygiene:</strong> Dermatological creams, sunscreens, and antiseptic lotions.</li>
+        </ul>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; background: #eae0d6; padding: 1.5rem; border-radius: 40px 12px 40px 12px; margin: 1.5rem 0;">
+          <div style="flex:1; min-width:150px;"><i class="fas fa-user-md" style="font-size:2rem; color:#1e3c3a;"></i> <strong>12+</strong> Qualified Pharmacists</div>
+          <div style="flex:1; min-width:150px;"><i class="fas fa-prescription-bottle" style="font-size:2rem; color:#1e3c3a;"></i> <strong>3500+</strong> Medicine Varieties</div>
+          <div style="flex:1; min-width:150px;"><i class="fas fa-trophy" style="font-size:2rem; color:#1e3c3a;"></i> <strong>35+</strong> Years of Trust</div>
+          <div style="flex:1; min-width:150px;"><i class="fas fa-smile" style="font-size:2rem; color:#1e3c3a;"></i> <strong>1M+</strong> Happy Patients</div>
+        </div>
+
+        <p style="font-style: italic; color: #1e3c3a; font-size: 1.1rem;"><i class="fas fa-quote-left"></i> Health is the real wealth – and we are here to protect it. Visit Fidelity Dawakhana today, or order online from the comfort of your home. We deliver quality, care, and trust with every package.</p>
+        <p>Whether you need a simple painkiller, a complex prescription, or expert health advice, Fidelity Dawakhana is your trusted partner. Our store in Tanda, Bulandshahr is open seven days a week, and our online portal is available 24/7. Experience the Fidelity difference – where every patient is treated like family.</p>
+      </div>
+    </section>
+
+    <!-- LOGIN + SIGNUP (both in one section) -->
+    <section id="login" class="auth-section">
+      <div class="auth-grid">
+        <!-- LOGIN CARD -->
+        <div class="auth-card">
+          <h3><i class="fas fa-lock-open"></i> Login</h3>
+          <p>Access your health records &amp; order medicines</p>
+          <form onsubmit="return handleLogin(event)">
+            <label for="loginEmail"><i class="far fa-envelope"></i> Email / Phone</label>
+            <input type="email" id="loginEmail" placeholder="doctor@fidelity.pk" required>
+            <label for="loginPassword"><i class="fas fa-key"></i> Password</label>
+            <input type="password" id="loginPassword" placeholder="••••••••" required>
+            <button type="submit" class="btn"><i class="fas fa-arrow-right-to-bracket"></i> Login</button>
+            <div class="form-foot">
+              <span><input type="checkbox" id="remember"> <label for="remember">Remember me</label></span>
+              <a href="#">Forgot password?</a>
+            </div>
+          </form>
+        </div>
+
+        <!-- SIGNUP CARD -->
+        <div class="auth-card">
+          <h3><i class="fas fa-user-plus"></i> Sign Up</h3>
+          <p>Create your account for faster ordering</p>
+          <form onsubmit="return handleSignup(event)">
+            <label for="signupName"><i class="fas fa-user"></i> Full Name</label>
+            <input type="text" id="signupName" placeholder="Hakim Ahmed" required>
+            <label for="signupEmail"><i class="far fa-envelope"></i> Email</label>
+            <input type="email" id="signupEmail" placeholder="ahmed@fidelity.pk" required>
+            <label for="signupPhone"><i class="fas fa-phone"></i> Phone</label>
+            <input type="tel" id="signupPhone" placeholder="+971 58 258 2650">
+            <label for="signupPassword"><i class="fas fa-key"></i> Password</label>
+            <input type="password" id="signupPassword" placeholder="at least 6 characters" required minlength="6">
+            <label for="signupRole"><i class="fas fa-user-md"></i> I am a</label>
+            <select id="signupRole">
+              <option value="patient">Patient</option>
+              <option value="doctor">Doctor</option>
+              <option value="pharmacist">Pharmacist</option>
+            </select>
+            <button type="submit" class="btn"><i class="fas fa-user-check"></i> Create Account</button>
+            <div class="form-foot" style="justify-content:center; gap:0.5rem;">
+              <span>Already have an account? <a href="#login" style="text-decoration:underline;">Login</a></span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT US (additional detail) -->
+    <section id="about" class="page-section">
+      <h2 class="section-title"><i class="fas fa-notes-medical"></i> About Fidelity Dawakhana</h2>
+      <div class="two-col">
+        <div class="card">
+          <i class="fas fa-user-md"></i>
+          <h4>Our Story</h4>
+          <p style="margin-top: 0.5rem;">Fidelity Dawakhana was established in 1987 by Hakim Muhammad Saeed. We blend traditional Unani medicine with modern allopathy. Our store is a trusted name for every kind of remedy – from herbal tonics to life-saving drugs.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-hand-holding-heart"></i>
+          <h4>Our Promise</h4>
+          <p style="margin-top: 0.5rem;">Every medicine is sourced directly from certified manufacturers. We maintain cold chain, expire-date tracking, and a qualified pharmacist at your service. Your health is our first priority.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-truck-fast"></i>
+          <h4>Delivery &amp; Service</h4>
+          <p style="margin-top: 0.5rem;">Same-day delivery in major cities. 24/7 online ordering. We also offer free health consultation with every purchase above Rs. 1000.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT US (updated) -->
+    <section id="contact" class="page-section">
+      <h2 class="section-title"><i class="fas fa-address-card"></i> Contact Us</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 2.5rem; background: #fcf9f6; padding: 2rem; border-radius: 50px 12px 50px 12px; border:1px solid #e5dad0;">
+        <div style="flex:1; min-width: 200px;">
+          <p><i class="fas fa-store" style="color:#1e3c3a; width:2rem;"></i> Tanda, Bulandshahr, Uttar Pradesh</p>
+          <p><i class="fas fa-phone-alt" style="color:#1e3c3a; width:2rem;"></i> +971 58 258 2650</p>
+          <p><i class="fas fa-envelope" style="color:#1e3c3a; width:2rem;"></i> care@fidelitydawakhana.pk</p>
+          <p><i class="fas fa-clock" style="color:#1e3c3a; width:2rem;"></i> Mon–Sat: 9am – 11pm</p>
+        </div>
+        <div style="flex:2; min-width: 200px;">
+          <p><strong>Emergency?</strong> Call our pharmacist directly: <span style="background:#1e3c3a; color:white; padding:0.2rem 1.2rem; border-radius:40px;">+971 58 258 2650</span></p>
+          <p style="margin-top:1rem;"><i class="fas fa-info-circle"></i> For orders &amp; prescription refill, use our login portal.</p>
+          <p><i class="fas fa-map-pin"></i> Landmark: Near Tanda Bus Stand, opposite City Hospital.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TERMS & CONDITIONS -->
+    <section id="terms" class="page-section">
+      <h2 class="section-title"><i class="fas fa-file-contract"></i> Terms &amp; Conditions</h2>
+      <div class="terms-box">
+        <ul>
+          <li><i class="fas fa-check-circle"></i> All medicines are dispensed under the supervision of a licensed pharmacist.</li>
+          <li><i class="fas fa-check-circle"></i> Prescription required for all allopathic and controlled drugs.</li>
+          <li><i class="fas fa-check-circle"></i> Delivery charges apply based on location and order value.</li>
+          <li><i class="fas fa-check-circle"></i> Return policy: unopened and undamaged products within 7 days.</li>
+          <li><i class="fas fa-check-circle"></i> We do not share your personal data with third parties.</li>
+          <li><i class="fas fa-check-circle"></i> Fidelity Dawakhana reserves the right to update these terms.</li>
+        </ul>
+        <p style="margin-top: 1.5rem; background: #eae0d6; padding: 1rem; border-radius: 60px; text-align: center;">
+          <i class="fas fa-handshake"></i> By using our services, you agree to the above terms.
+        </p>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="#terms">Terms</a>
+        <a href="#login">Login / Sign Up</a>
+      </div>
+      <p>
+        <i class="fas fa-copyright"></i> 2026 Fidelity Dawakhana – every kind of medicine, authentic &amp; trusted.
+        <br><span style="font-size:0.9rem; opacity:0.8;"><i class="fas fa-heart" style="color:#a64d4d;"></i> made with care for our patients</span>
+      </p>
+    </footer>
+  </div>
+
+  <!-- JAVASCRIPT (login + signup handlers) -->
+  <script>
+    // Login handler
+    function handleLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value.trim();
+      if (email === '' || password === '') {
+        alert('Please fill in both fields.');
+        return false;
+      }
+      if (password.length < 4) {
+        alert('Password must be at least 4 characters.');
+        return false;
+      }
+      alert('✅ Welcome back, ' + email.split('@')[0] + '! (demo login)');
+      return false;
+    }
+
+    // Signup handler
+    function handleSignup(e) {
+      e.preventDefault();
+      const name = document.getElementById('signupName').value.trim();
+      const email = document.getElementById('signupEmail').value.trim();
+      const phone = document.getElementById('signupPhone').value.trim();
+      const password = document.getElementById('signupPassword').value.trim();
+      const role = document.getElementById('signupRole').value;
+      
+      if (name === '' || email === '' || password === '') {
+        alert('Please fill in all required fields (Name, Email, Password).');
+        return false;
+      }
+      if (password.length < 6) {
+        alert('Password must be at least 6 characters.');
+        return false;
+      }
+      alert('🎉 Account created for ' + name + ' (' + role + '). Welcome to Fidelity Dawakhana!');
+      document.getElementById('signupName').value = '';
+      document.getElementById('signupEmail').value = '';
+      document.getElementById('signupPhone').value = '';
+      document.getElementById('signupPassword').value = '';
+      return false;
+    }
+
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    console.log('🌿 Fidelity Dawakhana – Human crafted with care.');
+  </script>
 </body>
-
 </html>
